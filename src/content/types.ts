@@ -5,6 +5,8 @@ export type InterviewQA = {
   followUp?: string
 }
 
+
+
 export type Section = {
   heading: string
   body: string
