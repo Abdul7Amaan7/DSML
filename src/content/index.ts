@@ -3,12 +3,22 @@ import descriptivestatistics from './chapters/01-descriptive-statistics'
 import probability from "./chapters/02-probability"
 import probabilitydistributions from './chapters/03-probability-destribution'
 import hypothesistesting from './chapters/04-hypothesis-testing'
+import statisticaltests from './chapters/05-statistical-tests'
+import samplingtechniques from './chapters/06-sampling-technique'
+import regression from './chapters/07-statistical-regression'
+import essentialml from './chapters/08-essential-ml'
+import expdesign from './chapters/09-experimental-design'
 
 export const chapters: Chapter[] = [
   descriptivestatistics,
   probability,
   probabilitydistributions,
   hypothesistesting,
+  statisticaltests,
+  samplingtechniques,
+  regression,
+  essentialml,
+  expdesign,
 ]
 
 export type TopicRef = {
