@@ -1,9 +1,14 @@
 import type { Chapter, Topic } from './types'
 import descriptivestatistics from './chapters/01-descriptive-statistics'
+import probability from "./chapters/02-probability"
+import probabilitydistributions from './chapters/03-probability-destribution'
+import hypothesistesting from './chapters/04-hypothesis-testing'
 
 export const chapters: Chapter[] = [
   descriptivestatistics,
-
+  probability,
+  probabilitydistributions,
+  hypothesistesting,
 ]
 
 export type TopicRef = {
