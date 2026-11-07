@@ -175,3 +175,176 @@ tr:last-child td { border-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+/* ========================================
+   TOPIC IMAGE GALLERY
+======================================== */
+
+.topic-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 30px 0 42px;
+  align-items: stretch;
+}
+
+/* ========================================
+   IMAGE CARD
+======================================== */
+
+.topic-image {
+  min-width: 0;
+  margin: 0;
+  padding: 14px;
+  overflow: hidden;
+
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.topic-image:hover {
+  border-color: #526783;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* ========================================
+   IMAGE TITLE
+======================================== */
+
+.topic-image-title {
+  margin: 0 2px 12px;
+
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+/* ========================================
+   IMAGE CONTAINER
+======================================== */
+
+.topic-image-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: #f1f5f9;
+  border-radius: 9px;
+}
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.topic-image-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.4s ease;
+}
+
+/* Photographs */
+
+.topic-image-media--cover img {
+  object-fit: cover;
+}
+
+/* Diagrams, charts and architecture images */
+
+.topic-image-media--contain img {
+  object-fit: contain;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.topic-image:hover .topic-image-media--cover img {
+  transform: scale(1.035);
+}
+
+/* ========================================
+   IMAGE CAPTION
+======================================== */
+
+.topic-image-caption {
+  margin: 12px 2px 2px;
+
+  color: #9caabe;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .topic-images {
+    gap: 16px;
+    margin: 26px 0 34px;
+  }
+
+  .topic-image {
+    padding: 11px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 640px) {
+  .topic-images {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 22px 0 30px;
+  }
+
+  .topic-image {
+    padding: 11px;
+    border-radius: 12px;
+  }
+
+  .topic-image-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .topic-image-caption {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-image,
+  .topic-image-media img {
+    transition: none;
+  }
+
+  .topic-image:hover {
+    transform: none;
+  }
+
+  .topic-image:hover .topic-image-media img {
+    transform: none;
+  }
+}

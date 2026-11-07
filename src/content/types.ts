@@ -1,16 +1,63 @@
 
+// -------------------------
+// Domain & Configuration
+// -------------------------
+
+export type Domain =
+  | 'data-science'
+  | 'machine-learning'
+  | 'deep-learning'
+  | 'natural-language-processing'
+  | 'nlp'
+
+export type Difficulty =
+  | 'easy'
+  | 'medium'
+  | 'hard'
+
+export type Priority =
+  | 'high'
+  | 'extreme'
+
+// -------------------------
+// Interview
+// -------------------------
+
 export type InterviewQA = {
   q: string
   a: string
   followUp?: string
 }
 
+// -------------------------
+// Images
+// -------------------------
 
+export type TopicImage = {
+  src: string
+  alt: string
+  title?: string
+  caption?: string
+  width?: number
+  height?: number
+  fit?: 'cover' | 'contain'
+}
+
+
+
+
+// -------------------------
+// Sections
+// -------------------------
 
 export type Section = {
   heading: string
   body: string
 }
+
+// -------------------------
+// Code
+// -------------------------
 
 export type CodeSample = {
   title: string
@@ -18,19 +65,29 @@ export type CodeSample = {
   source: string
 }
 
+// -------------------------
+// Concepts
+// -------------------------
+
 export type Concept = {
   definition: string
   whyUsed: string
   whenToUse: string[]
 }
 
+// -------------------------
+// Formulas
+// -------------------------
+
 export type Formula = {
   expression: string
   explanation: string
+
   variables: {
     symbol: string
     meaning: string
   }[]
+
   example: {
     problem: string
     steps: string[]
@@ -38,28 +95,43 @@ export type Formula = {
   }
 }
 
+// -------------------------
+// Practical Examples
+// -------------------------
+
 export type PracticalExample = {
   title: string
-  domain: 'data-science' | 'machine-learning' | 'deep-learning'
+  domain: Domain
   problem: string
   approach: string[]
   code?: CodeSample[]
   outcome: string
 }
 
+// -------------------------
+// Assignments
+// -------------------------
+
 export type Assignment = {
   id: string
   title: string
-  difficulty: 'easy' | 'medium' | 'hard'
+  difficulty: Difficulty
   task: string
   expectedOutcome: string
   hint?: string
 }
 
+// -------------------------
+// Topic
+// -------------------------
+
 export type Topic = {
   slug: string
   title: string
   summary: string
+
+  learningObjectives?: string[]
+  prerequisites?: string[]
 
   concept: Concept
 
@@ -77,19 +149,35 @@ export type Topic = {
 
   code?: CodeSample[]
 
+  images?: TopicImage[]
+
   pitfalls?: string[]
 
   interview: InterviewQA[]
+
+  references?: {
+    title: string
+    url: string
+  }[]
 }
 
-export type Chapter = {
-  id: string
-  number: number
-  title: string
-  tagline: string
-  priority?: 'high' | 'extreme'
-  topics: Topic[]
+// -------------------------
+// Topic Factory Extras
+// -------------------------
+
+export type TopicExtras = {
+  formula?: Formula
+  code?: CodeSample[]
+  pitfalls?: string[]
+  images?: TopicImage[]
+  learningObjectives?: string[]
+  prerequisites?: string[]
+  references?: Topic['references']
 }
+
+// -------------------------
+// Topic Factory
+// -------------------------
 
 export function topic(
   slug: string,
@@ -98,13 +186,9 @@ export function topic(
   concept: Concept,
   sections: Section[],
   practicalExample: PracticalExample,
-  assignments: [Assignment, Assignment, Assignment],
+  assignments: Topic['assignments'],
   interview: InterviewQA[],
-  extras?: {
-    formula?: Formula
-    code?: CodeSample[]
-    pitfalls?: string[]
-  },
+  extras: TopicExtras = {},
 ): Topic {
   return {
     slug,
@@ -115,8 +199,19 @@ export function topic(
     practicalExample,
     assignments,
     interview,
-    formula: extras?.formula,
-    code: extras?.code,
-    pitfalls: extras?.pitfalls,
+    ...extras,
   }
+}
+
+// -------------------------
+// Chapter
+// -------------------------
+
+export type Chapter = {
+  id: string
+  number: number
+  title: string
+  tagline: string
+  priority?: Priority
+  topics: Topic[]
 }

@@ -19,6 +19,9 @@ import sckitlearnimportant from './chapters/17-sckitlearn-learning-project'
 import tensorflow from './chapters/18-tensor-flow'
 import nlp from './chapters/19-nlp'
 import tensorflowunderstanding from './chapters/20-tensorflow-understanding'
+import deeplearning from './chapters/21-deeplearning'
+import nlptextpreprocessing from './chapters/22-nlp-textclassification'
+import ngramlanguage from './chapters/23-ngram-language'
 
 export const chapters: Chapter[] = [
   descriptivestatistics,
@@ -40,7 +43,11 @@ export const chapters: Chapter[] = [
   sckitlearnimportant,
   tensorflow,
   nlp,
-  tensorflowunderstanding
+  tensorflowunderstanding,
+  deeplearning,
+  nlptextpreprocessing,
+  ngramlanguage
+
 ]
 
 export type TopicRef = {
