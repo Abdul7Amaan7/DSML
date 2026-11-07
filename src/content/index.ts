@@ -22,6 +22,9 @@ import tensorflowunderstanding from './chapters/20-tensorflow-understanding'
 import deeplearning from './chapters/21-deeplearning'
 import nlptextpreprocessing from './chapters/22-nlp-textclassification'
 import ngramlanguage from './chapters/23-ngram-language'
+import textrepresentation from './chapters/24-textrepresentation'
+import textclassfication from './chapters/25-text-classification'
+import textparsing from './chapters/26-text-parsing'
 
 export const chapters: Chapter[] = [
   descriptivestatistics,
@@ -46,7 +49,10 @@ export const chapters: Chapter[] = [
   tensorflowunderstanding,
   deeplearning,
   nlptextpreprocessing,
-  ngramlanguage
+  ngramlanguage,
+  textrepresentation,
+  textclassfication,
+  textparsing
 
 ]
 
